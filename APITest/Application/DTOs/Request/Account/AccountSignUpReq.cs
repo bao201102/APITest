@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace APITest.Application.DTOs.Request.Account
+namespace APITest.Application.DTOs.Request
 {
     public class AccountSignUpReq
     {

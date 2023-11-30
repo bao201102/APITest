@@ -1,7 +1,5 @@
-﻿using APITest.Domain.Entities;
-using APITest.Domain.Interfaces;
+﻿using APITest.Domain.Interfaces;
 using Dapper;
-using Dapper.FastCrud;
 using System.Data;
 
 namespace APITest.Infrastructure.Data
@@ -23,29 +21,14 @@ namespace APITest.Infrastructure.Data
             }
         }
 
-        public IEnumerable<T> FindAll<T>() where T : BaseEntity
+        public async Task<IEnumerable<T>> QueryStoredProc<T>(string StoreProcedureName, DynamicParameters param, IDbTransaction? transaction = null, int? commandTimeout = null)
         {
-            return _Connection.Find<T>();
+            return await _Connection.QueryAsync<T>(StoreProcedureName, param, transaction, commandTimeout, CommandType.StoredProcedure);
         }
 
-        public T GetById<T>(T obj) where T : BaseEntity
+        public async Task<T> QueryFirstStoredProc<T>(string StoreProcedureName, DynamicParameters param, IDbTransaction? transaction = null, int? commandTimeout = null)
         {
-            return _Connection.Get(obj);
-        }
-
-        public async Task<IEnumerable<T>> StoreProcedureQuery<T>(string StoreProcedureName, object param = null)
-        {
-            return await _Connection.QueryAsync<T>(StoreProcedureName, param, null, null, CommandType.StoredProcedure);
-        }
-
-        public IEnumerable<T> SQLQuery<T>(string SQLQuery, object param = null)
-        {
-            return _Connection.Query<T>(SQLQuery, param);
-        }
-
-        public IEnumerable<TReturn> SQLQuery<TFirst, TSecond, TReturn>(string SQLQuery, Func<TFirst, TSecond, TReturn> map, object param = null)
-        {
-            return _Connection.Query(SQLQuery, map, param);
+            return await _Connection.QueryFirstOrDefaultAsync<T>(StoreProcedureName, param, transaction, commandTimeout, CommandType.StoredProcedure);
         }
 
         private void Dispose(bool disposing)

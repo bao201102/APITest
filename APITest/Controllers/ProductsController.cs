@@ -1,4 +1,5 @@
-﻿using APITest.Application.DTOs.Response.Product;
+﻿using APITest.Application.DTOs.Request.Product;
+using APITest.Application.DTOs.Response;
 using APITest.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ namespace APITest.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseController
     {
         private readonly IProductService _service;
 
@@ -26,8 +27,36 @@ namespace APITest.Controllers
         [ProducesResponseType(200, Type = typeof(ProductRes))]
         public async Task<IActionResult> ReadAll()
         {
-            var products = await _service.ReadAll();
-            return Ok(products);
+            var result = await _service.ReadAll();
+            return ApiOK(result);
+        }
+
+        /// <summary>
+        /// Search Product
+        /// </summary>
+        /// 2023-11-17 - BaoNN
+        /// <returns></returns>
+        [HttpPost("search")]
+        [Authorize]
+        [ProducesResponseType(200, Type = typeof(PagingResponse<ProductSearchRes>))]
+        public async Task<IActionResult> Search(ProductSearchReq obj)
+        {
+            var result = await _service.Search(obj);
+            return ApiOK(result);
+        }
+
+        /// <summary>
+        /// Create Product
+        /// </summary>
+        /// 2023-11-17 - BaoNN
+        /// <returns></returns>
+        [HttpPost("create")]
+        [Authorize]
+        [ProducesResponseType(200, Type = typeof(bool))]
+        public async Task<IActionResult> Create(ProductCreateReq obj)
+        {
+            var result = await _service.Create(obj, CurrentUser.UserID);
+            return ApiOK(result);
         }
     }
 }

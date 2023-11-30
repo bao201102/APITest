@@ -37,14 +37,16 @@ namespace APITest.Domain.Interfaces
         //IEnumerable<T> Execute<T>(string storeProcedureName, object param = null, IDbTransaction transaction = null, int? timeOut = null);
         IDbConnection Connection { get; }
 
-        //T Insert<T>(T entity, IDbTransaction transaction = null) where T : BaseEntity;
-
-        //IEnumerable<T> Insert<T>(IEnumerable<T> entities, IDbTransaction transaction = null) where T : BaseEntity;
-
-        //T Update<T>(T entity, IDbTransaction transaction = null) where T : BaseEntity;
-
-        //IEnumerable<T> Update<T>(IEnumerable<T> entities, IDbTransaction transaction = null) where T : BaseEntity;
-
-        //int BulkUpdate<T>(T entity, Action<IConditionalBulkSqlStatementOptionsBuilder<T>> statementOptions = null) where T : BaseEntity;
+        /// <summary>
+        /// Often used for bool
+        /// </summary>
+        /// <param name="StoreProcedureName"></param>
+        /// <param name="param"></param>
+        /// <param name="transaction"></param>
+        /// <param name="commandTimeout"></param>
+        /// <returns>
+        /// The number of rows affected
+        /// </returns>
+        Task<int> ExecuteAsync(string StoreProcedureName, object? param = null, IDbTransaction? transaction = null, int? commandTimeout = null);
     }
 }

@@ -1,14 +1,12 @@
-﻿using APITest.Application.DTOs.Request.Account;
-using APITest.Application.DTOs.Response.Product;
+﻿using APITest.Application.DTOs.Request;
 using APITest.Application.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APITest.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AccountsController : ControllerBase
+    public class AccountsController : BaseController
     {
         private readonly IAccountService _service;
 
@@ -26,8 +24,21 @@ namespace APITest.Controllers
         [ProducesResponseType(200, Type = typeof(bool))]
         public async Task<IActionResult> SignUp(AccountSignUpReq obj)
         {
-            var products = await _service.SignUp(obj);
-            return Ok(products);
+            var result = await _service.SignUp(obj);
+            return ApiOK(result);
+        }
+
+        /// <summary>
+        /// Sign in account 
+        /// </summary>
+        /// 2023-11-17 - BaoNN
+        /// <returns></returns>
+        [HttpPost("sign-in")]
+        [ProducesResponseType(200, Type = typeof(string))]
+        public async Task<IActionResult> SignIn(AccountSignInReq obj)
+        {
+            var result = await _service.SignIn(obj);
+            return ApiOK(result);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using APITest.Application;
 using APITest.Infrastructure;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +31,9 @@ builder.Services.AddSwaggerGen(c =>
             new string[] {}
         }
     });
-    //c.DocumentFilter<RemoveSchemaFilter>();
+
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 
 // Configure
@@ -44,7 +46,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.DefaultModelsExpandDepth(-1);
+    });
 }
 
 app.UseAuthentication();
@@ -54,11 +59,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-//public class RemoveSchemaFilter : IDocumentFilter
-//{
-//    public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
-//    {
-//        swaggerDoc.Components.Schemas.Clear();
-//    }
-//}

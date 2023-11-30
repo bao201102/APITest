@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APITest</name>
+    </assembly>
+    <members>
+        <member name="M:APITest.Controllers.AccountsController.SignUp(APITest.Application.DTOs.Request.AccountSignUpReq)">
+            <summary>
+            Sign up account 
+            </summary>
+            2023-11-16 - BaoNN
+            <returns></returns>
+        </member>
+        <member name="M:APITest.Controllers.AccountsController.SignIn(APITest.Application.DTOs.Request.AccountSignInReq)">
+            <summary>
+            Sign in account 
+            </summary>
+            2023-11-17 - BaoNN
+            <returns></returns>
+        </member>
+        <member name="M:APITest.Controllers.ProductsController.ReadAll">
+            <summary>
+            Get all Product
+            </summary>
+            2023-11-16 - BaoNN
+            <returns></returns>
+        </member>
+        <member name="M:APITest.Controllers.ProductsController.Search(APITest.Application.DTOs.Request.Product.ProductSearchReq)">
+            <summary>
+            Search Product
+            </summary>
+            2023-11-17 - BaoNN
+            <returns></returns>
+        </member>
+        <member name="M:APITest.Domain.Interfaces.IReadOnlyRepository.QueryStoredProc``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            Used to get list data using Stored Procedure
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="StoreProcedureName"></param>
+            <param name="param"></param>
+            <returns>
+            A sequence of data of <typeparamref name="T"/>; if a basic type (int, string, etc) is queried then the data from the first column is assumed, otherwise an instance is
+            created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
+            </returns>
+        </member>
+        <member name="M:APITest.Domain.Interfaces.IReadOnlyRepository.QueryFirstStoredProc``1(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            Used to get single-row data using Stored Procedure
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="StoreProcedureName"></param>
+            <param name="param"></param>
+            <returns>
+            A sequence of data of <typeparamref name="T"/>; if a basic type (int, string, etc) is queried then the data from the first column is assumed, otherwise an instance is
+            created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
+            </returns>
+        </member>
+        <member name="M:APITest.Domain.Interfaces.IRepository.ExecuteAsync(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            Often used for bool
+            </summary>
+            <param name="StoreProcedureName"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns>
+            The number of rows affected
+            </returns>
+        </member>
+    </members>
+</doc>

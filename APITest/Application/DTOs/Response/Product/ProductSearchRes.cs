@@ -1,7 +1,8 @@
 ﻿namespace APITest.Application.DTOs.Response
 {
-    public class ProductRes
+    public class ProductSearchRes
     {
+        public int total_record { get; set; }
         public int product_id { get; set; }
         public string name { get; set; }
         public string img_url { get; set; }

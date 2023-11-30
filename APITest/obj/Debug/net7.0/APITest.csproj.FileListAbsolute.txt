@@ -60,3 +60,6 @@ F:\Study\Personal\APITest\APITest\bin\Debug\net7.0\Dapper.FastCrud.dll
 F:\Study\Personal\APITest\APITest\bin\Debug\net7.0\Newtonsoft.Json.dll
 F:\Study\Personal\APITest\APITest\bin\Debug\net7.0\Npgsql.dll
 F:\Study\Personal\APITest\APITest\bin\Debug\net7.0\BCrypt.Net-Core.dll
+F:\Study\Personal\APITest\APITest\bin\Debug\net7.0\FluentValidation.dll
+F:\Study\Personal\APITest\APITest\bin\Debug\net7.0\APITest.xml
+F:\Study\Personal\APITest\APITest\obj\Debug\net7.0\APITest.xml

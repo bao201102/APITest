@@ -1,4 +1,5 @@
-﻿using APITest.Application.Services.Interfaces;
+﻿using APITest.Application.DTOs.Response;
+using APITest.Application.Services.Interfaces;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,11 +17,14 @@ namespace APITest.Infrastructure.Authentication
             _jwtSettings = jwtSettings.Value;
         }
 
-        public string GenerateToken(string username)
+        public string GenerateToken(AccountSignInRes obj)
         {
-            var claims = new Claim[]
+            var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, username),
+                new Claim(ClaimTypes.Sid, obj.account_id.ToString()),
+                new Claim(ClaimTypes.Email, obj.email),
+                new Claim(ClaimTypes.Name, obj.name),
+                new Claim("/UserID", obj.account_id.ToString())
                 // Add other claims as needed
             };
 

@@ -45,6 +45,19 @@
           }
         }
       },
+      "FluentValidation/11.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.14": {
         "type": "package",
         "dependencies": {
@@ -759,6 +772,29 @@
         "lib/netstandard2.1/Dapper.FastCrud.dll",
         "lib/netstandard2.1/Dapper.FastCrud.xml",
         "logo.png"
+      ]
+    },
+    "FluentValidation/11.8.0": {
+      "sha512": "TiEaaYqSIAS+wXQv46LRm8Mca092XYNePD0n231Hqlkmm5FuToZoWnjI1ef/vJUxBzqR7/k2vaVQXxijNgVKRQ==",
+      "type": "package",
+      "path": "fluentvalidation/11.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.11.8.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/net6.0/FluentValidation.dll",
+        "lib/net6.0/FluentValidation.xml",
+        "lib/net7.0/FluentValidation.dll",
+        "lib/net7.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
       ]
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.14": {
@@ -2235,6 +2271,7 @@
       "BCrypt.Net-Core >= 1.6.0",
       "Dapper >= 2.1.21",
       "Dapper.FastCrud >= 3.1.46",
+      "FluentValidation >= 11.8.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.14",
       "Microsoft.AspNetCore.OpenApi >= 7.0.10",
       "Microsoft.Extensions.Configuration >= 8.0.0",
@@ -2296,6 +2333,10 @@
           "Dapper.FastCrud": {
             "target": "Package",
             "version": "[3.1.46, )"
+          },
+          "FluentValidation": {
+            "target": "Package",
+            "version": "[11.8.0, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",

@@ -48,41 +48,41 @@ namespace APITest.Application.Utilities
             return result;
         }
 
-        //protected PagingResponse<T> PagingSuccess<T>(IEnumerable<T> data, int pageIndex, int pageSize, int totalRecord = 0)
-        //{
-        //    var response = new PagingResponse<T>
-        //    {
-        //        CurrentPageIndex = pageIndex,
-        //        PageSize = pageSize,
-        //        StatusCode = CRUDStatusCodeRes.Success,
-        //        ErrorMessage = string.Empty
-        //    };
+        protected PagingResponse<T> PagingSuccess<T>(IEnumerable<T> data, int pageIndex, int pageSize, int totalRecord = 0)
+        {
+            var response = new PagingResponse<T>
+            {
+                CurrentPageIndex = pageIndex,
+                PageSize = pageSize,
+                StatusCode = CRUDStatusCodeRes.Success,
+                ErrorMessage = string.Empty
+            };
 
-        //    // Handle paging from DB
-        //    if (totalRecord > 0 || pageSize == -1 || pageIndex == -1)
-        //    {
-        //        response.Records = data.ToList();
-        //        response.TotalRecord = totalRecord;
-        //    }
-        //    else
-        //    {
-        //        response.Records = data.Skip(pageSize * pageIndex).Take(pageSize).ToList();
-        //        response.TotalRecord = data.Count();
-        //    }
+            // Handle paging from DB
+            if (totalRecord > 0 || pageSize == -1 || pageIndex == -1)
+            {
+                response.Records = data.ToList();
+                response.TotalRecord = totalRecord;
+            }
+            else
+            {
+                response.Records = data.Skip(pageSize * pageIndex).Take(pageSize).ToList();
+                response.TotalRecord = data.Count();
+            }
 
-        //    return response;
-        //}
+            return response;
+        }
 
-        //protected PagingResponse<T> PagingError<T>(T data = default(T), CRUDStatusCodeRes statusCode = CRUDStatusCodeRes.InvalidData, string msgError = "", int pageIndex = 0, int pageSize = 10)
-        //{
-        //    return new PagingResponse<T>
-        //    {
-        //        StatusCode = statusCode,
-        //        ErrorMessage = msgError,
-        //        CurrentPageIndex = pageIndex,
-        //        PageSize = pageSize
-        //    };
-        //}
+        protected PagingResponse<T> PagingError<T>(T data = default(T), CRUDStatusCodeRes statusCode = CRUDStatusCodeRes.InvalidData, string msgError = "", int pageIndex = 0, int pageSize = 10)
+        {
+            return new PagingResponse<T>
+            {
+                StatusCode = statusCode,
+                ErrorMessage = msgError,
+                CurrentPageIndex = pageIndex,
+                PageSize = pageSize
+            };
+        }
         #endregion
 
         #region Dispose

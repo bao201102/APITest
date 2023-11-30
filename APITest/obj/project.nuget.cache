@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "SW5aK6o/W/PiLiDbotNp2pgVGS5WEQPAZSCDHaatgBCiPY63u7t5HCjhd0dKA6Am90NY+vCvYAwc9Q85x+RRoQ==",
+  "dgSpecHash": "cYJMTYA/HMqXn1zWMj3GgwLy7n9HnsuftTWxNx8WFejOJndsB0L1612qLyd8qjbXcelCsVF4TYTLQE59uxzZ8w==",
   "success": true,
   "projectFilePath": "F:\\Study\\Personal\\APITest\\APITest\\APITest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bao20\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\bao20\\.nuget\\packages\\dapper\\2.1.21\\dapper.2.1.21.nupkg.sha512",
     "C:\\Users\\bao20\\.nuget\\packages\\dapper.fastcrud\\3.1.46\\dapper.fastcrud.3.1.46.nupkg.sha512",
+    "C:\\Users\\bao20\\.nuget\\packages\\fluentvalidation\\11.8.0\\fluentvalidation.11.8.0.nupkg.sha512",
     "C:\\Users\\bao20\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.14\\microsoft.aspnetcore.authentication.jwtbearer.7.0.14.nupkg.sha512",
     "C:\\Users\\bao20\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.10\\microsoft.aspnetcore.openapi.7.0.10.nupkg.sha512",
     "C:\\Users\\bao20\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

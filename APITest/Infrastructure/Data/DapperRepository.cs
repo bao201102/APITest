@@ -1,7 +1,5 @@
-﻿using APITest.Domain.Entities;
-using APITest.Domain.Interfaces;
-using Dapper.FastCrud;
-using Dapper.FastCrud.Configuration.StatementOptions.Builders;
+﻿using APITest.Domain.Interfaces;
+using Dapper;
 using System.Data;
 
 namespace APITest.Infrastructure.Data
@@ -23,99 +21,10 @@ namespace APITest.Infrastructure.Data
             }
         }
 
-        //public T Insert<T>(T entity, IDbTransaction transaction = null) where T : BaseEntity
-        //{
-        //    if (transaction == null)
-        //    {
-        //        _Connection.Insert(entity);
-        //    }
-        //    else
-        //    {
-        //        _Connection.Insert(entity, delegate (IStandardSqlStatementOptionsBuilder<T> s)
-        //        {
-        //            s.AttachToTransaction(transaction);
-        //        });
-        //    }
-
-        //    return entity;
-        //}
-
-        //public IEnumerable<T> Insert<T>(IEnumerable<T> entities, IDbTransaction transaction = null) where T : BaseEntity
-        //{
-        //    if (transaction == null)
-        //    {
-        //        foreach (T entity in entities)
-        //        {
-        //            _Connection.Insert(entity);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        foreach (T entity2 in entities)
-        //        {
-        //            _Connection.Insert(entity2, delegate (IStandardSqlStatementOptionsBuilder<T> s)
-        //            {
-        //                s.AttachToTransaction(transaction);
-        //            });
-        //        }
-        //    }
-
-        //    return entities;
-        //}
-
-        //public void ExcuteStore(string storeName, object param = null, IDbTransaction transaction = null)
-        //{
-        //}
-
-        //public T Update<T>(T entity, IDbTransaction transaction = null) where T : BaseEntity
-        //{
-        //    if (transaction == null)
-        //    {
-        //        _Connection.Update(entity);
-        //    }
-        //    else
-        //    {
-        //        _Connection.Update(entity, delegate (IStandardSqlStatementOptionsBuilder<T> s)
-        //        {
-        //            s.AttachToTransaction(transaction);
-        //        });
-        //    }
-
-        //    return entity;
-        //}
-
-        //public IEnumerable<T> Update<T>(IEnumerable<T> entities, IDbTransaction transaction = null) where T : BaseEntity
-        //{
-        //    if (transaction == null)
-        //    {
-        //        foreach (T entity in entities)
-        //        {
-        //            _Connection.Update(entity);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        foreach (T entity2 in entities)
-        //        {
-        //            _Connection.Update(entity2, delegate (IStandardSqlStatementOptionsBuilder<T> s)
-        //            {
-        //                s.AttachToTransaction(transaction);
-        //            });
-        //        }
-        //    }
-
-        //    return entities;
-        //}
-
-        //public int BulkUpdate<T>(T entity, Action<IConditionalBulkSqlStatementOptionsBuilder<T>> statementOptions = null) where T : BaseEntity
-        //{
-        //    if (statementOptions == null)
-        //    {
-        //        return _Connection.BulkUpdate(entity);
-        //    }
-
-        //    return _Connection.BulkUpdate(entity, statementOptions);
-        //}
+        public async Task<int> ExecuteAsync(string StoreProcedureName, object? param = null, IDbTransaction? transaction = null, int? commandTimeout = null)
+        {
+            return await _Connection.ExecuteAsync(StoreProcedureName, param, transaction, commandTimeout, CommandType.StoredProcedure);
+        }
 
         private void Dispose(bool disposing)
         {
